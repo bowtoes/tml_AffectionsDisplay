@@ -1,0 +1,17 @@
+"Keybinds.Toggle preferences data display.DisplayName": Toggle preferences data display
+
+Configs: {
+	PreferencesDisplayConfig: {
+		DisplayName: Preferences Display Config
+
+		textColor: {
+			Label: Text Color
+			Tooltip: ""
+		}
+
+		textScale: {
+			Label: Text Scale
+			Tooltip: ""
+		}
+	}
+}

@@ -1,0 +1,9 @@
+displayName = Preferences Display
+author = bowtoes
+version = 0.1.0
+side = Client
+homepage = https://github.com/bowtoes/tml_PreferencesDisplay
+hideCode = false
+hideResources = false
+includeSource = true
+buildIgnore = *.xcf,*.md,*.user
