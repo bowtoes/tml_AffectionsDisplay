@@ -1,1 +1,1 @@
-01_31_2025: v0.1.0 Initial relase
+01_31_2025: v0.1.1 Fixed scaling aspect ratio when text size exceeds screen dimension(s).

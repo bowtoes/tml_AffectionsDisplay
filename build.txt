@@ -1,8 +1,8 @@
 displayName = Preferences Display
 author = bowtoes
-version = 0.1.0
+version = 0.1.1
 side = Client
-homepage = https://github.com/bowtoes/tml_PreferencesDisplay
+homepage = https://github.com/bowtoes/tml_AffectionsDisplay
 hideCode = false
 hideResources = false
 includeSource = true

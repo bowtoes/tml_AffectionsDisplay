@@ -40,10 +40,14 @@ public class PreferencesDisplaySystem : ModSystem
 		float screenAspect = screenSize.X / screenSize.Y;
 		float stringAspect = baseStringSize.X / baseStringSize.Y;
 		if (stringAspect >= 1 && baseStringSize.X * scale.X > maxSize.X) {
+			float old = scale.X;
 			scale.X = maxSize.X / baseStringSize.X;
+			scale.Y *= scale.X / old;
 		}
 		if (stringAspect <= 1 && baseStringSize.Y * scale.Y > maxSize.Y) {
+			float old = scale.Y;
 			scale.Y = maxSize.Y / baseStringSize.Y;
+			scale.X *= scale.Y / old;
 		}
 		Vector2 maxPosition = bottomRight - baseStringSize * scale;
 		return (Vector2.Min(basePosition, maxPosition), scale);
