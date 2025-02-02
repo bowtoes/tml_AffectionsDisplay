@@ -13,4 +13,7 @@ public class AffectionsDisplayConfig : ModConfig
 
 	[Range(0.1f, 3)] public float textScale = 1;
 	public static float TextScale => ModContent.GetInstance<AffectionsDisplayConfig>().textScale;
+
+	public bool showAllNPCs = false;
+	public static bool ShowAllNPCs => ModContent.GetInstance<AffectionsDisplayConfig>().showAllNPCs;
 }

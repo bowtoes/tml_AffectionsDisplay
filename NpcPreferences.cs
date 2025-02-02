@@ -45,13 +45,26 @@ public record NpcPreferences
 				}
 			}
 
+			StringBuilder sb2 = new();
 			if (_npcPreferences.Count > 0) {
-				sb.AppendLine("NPC preferences:");
 				foreach ((int type, AffectionLevel level) in _npcPreferences.OrderBy(x => (-(int)x.Value, x.Key))) {
-					sb.AppendLine($"  {level}s {NPC.GetFullnameByID(type)}");
+					if (AffectionsDisplayConfig.ShowAllNPCs) {
+							sb2.AppendLine($"  {level}s {NPC.GetFullnameByID(type)}");
+					} else {
+						foreach (NPC x in Main.ActiveNPCs) {
+							if (x.type != type)
+								continue;
+							sb2.AppendLine($"  {level}s {x.FullName}");
+							break;
+						}
+					}
 				}
 			}
 
+			if (sb2.Length > 0) {
+				sb.AppendLine("NPC preferences:");
+				sb.Append(sb2);
+			}
 			return sb.ToString();
 		}
 	}

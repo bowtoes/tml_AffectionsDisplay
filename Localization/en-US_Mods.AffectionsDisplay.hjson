@@ -13,5 +13,10 @@ Configs: {
 			Label: Text Scale
 			Tooltip: ""
 		}
+
+		showAllNPCs: {
+			Label: Show All NPCs
+			Tooltip: Enable to show an NPC's affections for NPCs that aren't in the world.
+		}
 	}
 }

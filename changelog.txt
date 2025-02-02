@@ -1,1 +1,1 @@
-02_02_2025: v0.1.2.1 Fix localization
+02_02_2025: v0.1.3 Add option to enable/disable unconditional display of all NPC preferences
