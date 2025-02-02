@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using log4net;
 using Terraria.ModLoader;
 
-namespace PreferencesDisplay;
+namespace AffectionsDisplay;
 
-public class PreferencesDisplay : Mod
+public class AffectionsDisplay : Mod
 {
 	internal static ModKeybind toggleDisplay;
-	public static PreferencesDisplay Instance { get; private set; }
-	public static PreferencesDisplayConfig Config => ModContent.GetInstance<PreferencesDisplayConfig>();
+	public static AffectionsDisplay Instance { get; private set; }
+	public static AffectionsDisplayConfig Config => ModContent.GetInstance<AffectionsDisplayConfig>();
 
 	public override void Load()
 	{

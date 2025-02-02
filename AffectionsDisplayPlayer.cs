@@ -3,15 +3,15 @@ using Terraria.GameInput;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace PreferencesDisplay;
+namespace AffectionsDisplay;
 
 // ModPlayer class so that keybinds work.
-public class PreferencesDisplayPlayer : ModPlayer
+public class AffectionsDisplayPlayer : ModPlayer
 {
 	public override void ProcessTriggers(TriggersSet triggers)
 	{
-		if (PreferencesDisplay.toggleDisplay.JustPressed) {
-			PreferencesDisplaySystem.displayInformation = !PreferencesDisplaySystem.displayInformation;
+		if (AffectionsDisplay.toggleDisplay.JustPressed) {
+			AffectionsDisplaySystem.displayInformation = !AffectionsDisplaySystem.displayInformation;
 			SoundEngine.PlaySound(SoundID.Tink);
 		}
 	}

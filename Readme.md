@@ -1,4 +1,4 @@
-### v0.1.1
+### v0.1.2
 Adds text when hovering over an NPC head in the housing menu which lists their biome and neighbor preferences.  
 Comes with a configurable key to toggle the display on and off.
 The color can also be changed, as well as text scaling.

@@ -1,13 +1,13 @@
-[h1]v0.1.0[/h1]
-Adds text when hovering over an NPC head in the housing menu which lists their biome and neighbor preferences.
+[h1]v0.1.2[/h1]
+Adds text when hovering over an NPC head in the housing menu which lists their biome and neighbor preferences (affection levels).
 Comes with a configurable key to toggle the display on and off.
 
 Implementation inspired by [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2687866031]Census[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2857866907]NPC Happiness Viewer[/url]
 
 Works with modded NPCs.
 
-The mod also makes it possible for other mods to query this information and the text descriptions, if it would be helpful.
+The mod also allows for other mods to query this information and the text descriptions, if it would be helpful.
 
-Source code available: https://github.com/bowtoes/tml_PreferencesDisplay
+Source code available: https://github.com/bowtoes/tml_AffectionsDisplay
 
 (The icon is of Saint Christopher)

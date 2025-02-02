@@ -10,7 +10,7 @@ using Terraria.ID;
 using Terraria.Localization;
 using Terraria.ModLoader;
 
-namespace PreferencesDisplay;
+namespace AffectionsDisplay;
 
 public record NpcPreferences
 {
@@ -63,14 +63,14 @@ public record NpcPreferences
 	public static NpcPreferences Get(int type)
 	{
 		if (type < 0) {
-			PreferencesDisplay.Instance.Logger.Error($"Tried to get preference information for invalid NPC id {type}");
+			AffectionsDisplay.Instance.Logger.Error($"Tried to get preference information for invalid NPC id {type}");
 			return null;
 		}
 
 		if (!_allPreferences.ContainsKey(type)) {
 			var x = new NpcPreferences(type);
 			if (x.Profile is null) {
-				PreferencesDisplay.Instance.Logger.Error(
+				AffectionsDisplay.Instance.Logger.Error(
 					$"NPC Preferences profile for {Lang.GetNPCNameValue(x._type)} is NULL");
 				return null;
 			}
@@ -79,10 +79,10 @@ public record NpcPreferences
 				if (modifier is BiomePreferenceListTrait biomes) {
 					foreach (var biome in biomes.Preferences) {
 						if (biome is null) {
-							PreferencesDisplay.Instance.Logger.Warn(
+							AffectionsDisplay.Instance.Logger.Warn(
 								$"Found NULL biome in preferences list for {Lang.GetNPCNameValue(x._type)}");
 						} else if (biome.Biome is null) {
-							PreferencesDisplay.Instance.Logger.Warn(
+							AffectionsDisplay.Instance.Logger.Warn(
 								$"biome.Biome is NULL for {Lang.GetNPCNameValue(x._type)}, has _personalityDatabase been updated?");
 						} else {
 							x._biomePreferences.Add(biome.Biome.NameKey, biome.Affection);
@@ -105,13 +105,13 @@ public record NpcPreferences
 		_personalityDatabase = null;
 		FieldInfo dbField = typeof(ShopHelper).GetField("_database", BindingFlags.Instance | BindingFlags.NonPublic);
 		if (dbField is null) {
-			PreferencesDisplay.Instance.Logger.Error("Failed to get personality database field, something's gone terribly wrong.");
+			AffectionsDisplay.Instance.Logger.Error("Failed to get personality database field, something's gone terribly wrong.");
 			return false;
 		}
 
 		_personalityDatabase = dbField.GetValue(Main.ShopHelper) as PersonalityDatabase;
 		if (_personalityDatabase is null) {
-			PreferencesDisplay.Instance.Logger.Error("Couldn't retrieve personality database from Main.ShopHelper, something's gone terribly wrong.");
+			AffectionsDisplay.Instance.Logger.Error("Couldn't retrieve personality database from Main.ShopHelper, something's gone terribly wrong.");
 			return false;
 		}
 

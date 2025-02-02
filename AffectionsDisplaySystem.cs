@@ -10,24 +10,16 @@ using Terraria.UI;
 using Terraria.UI.Chat;
 using Terraria.UI.Gamepad;
 
-namespace PreferencesDisplay;
+namespace AffectionsDisplay;
 
-public class PreferencesDisplaySystem : ModSystem
+public class AffectionsDisplaySystem : ModSystem
 {
 	internal static bool displayInformation = true;
 
-	internal static string GetHoveredNPCPreferencesText()
+	internal static string GetHoveredNPCPreferencesText(int id)
 	{
-		if (UILinkPointNavigator.Shortcuts.NPCS_LastHovered < 0)
-			return null;
-		int id = Main.npc[UILinkPointNavigator.Shortcuts.NPCS_LastHovered].type;
 		NpcPreferences pref = NpcPreferences.Get(id);
-		string hoverText = pref is null
-			? $"\nFailed to get NPC preferences for {Lang.GetNPCNameValue(id)}"
-			: string.IsNullOrEmpty(pref.DisplayText)
-				? $"\nNo preferences."
-				: $"\n{pref.DisplayText}";
-		return hoverText;
+		return (pref is null || string.IsNullOrEmpty(pref.DisplayText)) ? "\nNo strong affections." : $"\n{pref.DisplayText}";
 	}
 
 	internal static (Vector2, Vector2) FitTextToScreen(string text, Vector2 scale, DynamicSpriteFont font, Vector2 basePosition, Vector2 screenPadding)
@@ -69,7 +61,7 @@ public class PreferencesDisplaySystem : ModSystem
 	{
 		if (!Main.dedServ) {
 			if (!NpcPreferences.InitializePersonalityDatabase())
-				PreferencesDisplay.Instance.Logger.Error("Failed to update NPC preferences");
+				AffectionsDisplay.Instance.Logger.Error("Failed to update NPC preferences");
 		}
 	}
 
@@ -83,20 +75,21 @@ public class PreferencesDisplaySystem : ModSystem
 			return;
 
 		// Draw the preferences text in a separate layer for simplicity
-		layers.Insert(mouseTextLayer + 1, new LegacyGameInterfaceLayer("PreferencesDisplay: Display",
+		layers.Insert(mouseTextLayer + 1, new LegacyGameInterfaceLayer("AffectionsDisplay: Display",
 			delegate {
-				if (Main.mouseItem.type != ItemID.None)
+				if (Main.mouseItem.type != ItemID.None || UILinkPointNavigator.Shortcuts.NPCS_LastHovered < 0)
 					return true;
-				string hoverText = GetHoveredNPCPreferencesText();
+				int npcId = Main.npc[UILinkPointNavigator.Shortcuts.NPCS_LastHovered].type;
+				string hoverText = GetHoveredNPCPreferencesText(npcId);
 				if (hoverText is not null) {
 					var font = FontAssets.CombatText[0].Value;
 					var offset = new Vector2(16);
-					(Vector2 position, Vector2 scale) = FitTextToScreen(hoverText, PreferencesDisplayConfig.TextScale, font, Main.MouseScreen + offset, 4);
+					(Vector2 position, Vector2 scale) = FitTextToScreen(hoverText, AffectionsDisplayConfig.TextScale, font, Main.MouseScreen + offset, 4);
 					ChatManager.DrawColorCodedStringWithShadow(Main.spriteBatch,
 						font,
 						hoverText,
 						position,
-						new Color(PreferencesDisplayConfig.TextColor.ToVector3() * Main.mouseTextColor / 255f),
+						new Color(AffectionsDisplayConfig.TextColor.ToVector3() * Main.mouseTextColor / 255f),
 						0f,
 						Vector2.Zero,
 						scale);
