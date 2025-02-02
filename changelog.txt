@@ -1,1 +1,1 @@
-02_02_2025: v0.1.2 Renamed from "Preferences Display" to "Affections Display"
+02_02_2025: v0.1.2.1 Fix localization

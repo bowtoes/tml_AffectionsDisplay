@@ -1,6 +1,6 @@
 displayName = Affections Display
 author = bowtoes
-version = 0.1.2
+version = 0.1.2.1
 side = Client
 homepage = https://github.com/bowtoes/tml_AffectionsDisplay
 hideCode = false

@@ -1,8 +1,8 @@
 "Keybinds.Toggle preferences data display.DisplayName": Toggle preferences data display
 
 Configs: {
-	PreferencesDisplayConfig: {
-		DisplayName: Preferences Display Config
+	AffectionsDisplayConfig: {
+		DisplayName: Affections Display Config
 
 		textColor: {
 			Label: Text Color
